@@ -6,8 +6,10 @@ const H1 = styled.h1`
   font-size: 1.2rem;
 `;
 
-//TODO : TS 적용
+interface TitleProps {
+  title: string;
+}
 
-export default function Title({ title }) {
+export default function Title({ title }: TitleProps) {
   return <H1>{title}</H1>;
 }

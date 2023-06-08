@@ -11,7 +11,7 @@ interface IChartProps {
 
 export default function Chart() {
   const { coinId } = useOutletContext<IChartProps>();
-  const { isLoading, error, data } = useQuery<ICoinHistory[]>(
+  const { isLoading, data } = useQuery<ICoinHistory[]>(
     ['history', coinId],
     () => fetchCoinHistory(coinId),
     { retry: 0, refetchInterval: 10000 }
@@ -20,7 +20,6 @@ export default function Chart() {
   return (
     <div>
       {isLoading && <Loading />}
-      {error && <p>Sorry chart no available </p>}
       {data && (
         <ReactApexChart
           type='candlestick'
