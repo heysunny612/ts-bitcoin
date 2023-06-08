@@ -2,8 +2,10 @@ import { NavLink, Outlet, useParams } from 'react-router-dom';
 import { styled } from 'styled-components';
 import Title from '../components/Title';
 import { useQuery } from 'react-query';
-import { fetchCoinsPrice, fetchCoinsInfo } from '../api/coins';
-import { ICoinPrice, ICoinInfo } from '../type/interfaces';
+import { fetchCoinsInfo } from '../api/coins';
+import { ICoinInfo } from '../type/interfaces';
+import moment from 'moment';
+import Loading from '../components/Loading';
 
 const CoinArticle = styled.article`
   display: flex;
@@ -74,24 +76,17 @@ const TapMenu = styled.div`
 export default function Coin() {
   const { coinId } = useParams();
   const {
-    isLoading: loadingInfo,
-    error: errorInfo,
+    isLoading,
+    error,
     data: info,
   } = useQuery<ICoinInfo>(['coinInfo', coinId], () =>
     fetchCoinsInfo(coinId as unknown as string)
   );
-  const {
-    isLoading: loadingPrice,
-    error: errorPrice,
-    data: price,
-  } = useQuery<ICoinPrice>(['coinPrice', coinId], () =>
-    fetchCoinsPrice(coinId as unknown as string)
-  );
 
   return (
     <>
-      {loadingInfo && <p>로딩중입니다</p>}
-      {errorInfo && <p>something is wrong...</p>}
+      {isLoading && <Loading />}
+      {error && <p>OOPS! TRY AGAIN</p>}
       <Title title={`${info?.name} 정보`} />
       {info && (
         <CoinArticle>
@@ -125,9 +120,11 @@ export default function Coin() {
               </tr>
               <tr>
                 <th>First Date At</th>
-                <td>{info?.first_data_at}</td>
+                <td>
+                  {moment(info?.first_data_at).utc().format('YYYY-MM-DD')}
+                </td>
                 <th>Started At</th>
-                <td>{info?.started_at}</td>
+                <td>{moment(info?.started_at).utc().format('YYYY-MM-DD')}</td>
               </tr>
             </tbody>
           </Table>
@@ -187,9 +184,7 @@ export default function Coin() {
           </NavLink>
         </TapMenu>
         <article>
-          {loadingPrice && <p>로딩중</p>}
-          {errorPrice && <p>something is wrong...</p>}
-          <Outlet context={{ coinId, price }} />
+          <Outlet context={{ coinId }} />
         </article>
       </TapWarpper>
     </>
