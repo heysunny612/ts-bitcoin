@@ -26,13 +26,13 @@ const Table = styled.table`
     padding: 0.8rem;
     font-weight: bold;
     background-color: ${(props) => props.theme.bgTable};
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid #dddddd;
     color: ${(props) => props.theme.textColor};
   }
   td {
     vertical-align: middle;
     padding: 0.8rem;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid #dddddd;
     line-height: 1.5;
     color: #333;
   }
@@ -89,7 +89,7 @@ export default function Coin() {
   return (
     <>
       {isLoading && <Loading />}
-      {error && <p>OOPS! TRY AGAIN</p>}
+      {error && <p style={{ color: '#000000' }}>OOPS! TRY AGAIN</p>}
       <Title title={`${info?.name} 정보`} />
       {info && (
         <CoinArticle>

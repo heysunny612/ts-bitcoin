@@ -57,7 +57,7 @@ export default function Price() {
   return (
     <>
       {isLoading && <Loading />}
-      {error && <p>OOPS TRY AGAIN</p>}
+      {error && <p style={{ color: '#000000' }}>OOPS! TRY AGAIN</p>}
       {price && (
         <PriceList>
           <li>

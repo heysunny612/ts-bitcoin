@@ -20,7 +20,11 @@ export default function Chart() {
   return (
     <div>
       {isLoading && <Loading />}
-      {error ? <p style={{ textAlign: 'center' }}>No Chart</p> : ''}
+      {error ? (
+        <p style={{ textAlign: 'center', color: '#000000' }}>No Chart</p>
+      ) : (
+        ''
+      )}
       {data && (
         <ReactApexChart
           type='candlestick'

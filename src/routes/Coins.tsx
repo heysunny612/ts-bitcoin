@@ -111,7 +111,7 @@ export default function Coins() {
   return (
     <>
       {isLoading && <Loading />}
-      {error && <p>something is wrong...</p>}
+      {error && <p style={{ color: '#000000' }}>OOPS! TRY AGAIN</p>}
       <Title title='디지털자산' />
       <Table>
         <colgroup>
