@@ -28,7 +28,7 @@ export default function Chart() {
             {
               name: 'price',
               data: data.map((price) => ({
-                x: new Date(price.time_close),
+                x: new Date(price.time_close * 1000).toISOString().slice(2, 10),
                 y: [price.open, price.high, price.low, price.close],
               })),
             },
@@ -45,11 +45,10 @@ export default function Chart() {
               background: '#f9fafc',
             },
             xaxis: {
-              labels: { show: false },
+              labels: { show: true },
               axisTicks: { show: false },
               axisBorder: { show: false },
-              type: 'datetime',
-              tooltip: { enabled: false },
+              tooltip: { enabled: true },
             },
             yaxis: {
               tooltip: {

@@ -15,19 +15,25 @@ const Table = styled.table`
   th {
     padding: 0.8rem 0;
     font-weight: bold;
-    background-color: #f9fafc;
+    background-color: ${(props) => props.theme.bgTable};
+
     border-top: 1px solid #dddddd;
     border-bottom: 1px solid #eeeeee;
+
     &:nth-child(3) {
       background-color: #eef0f5;
+      button {
+        color: #333 !important;
+      }
     }
 
     button {
       background-color: transparent;
+      color: ${(props) => props.theme.textColor};
       outline: none;
       &.active {
         font-weight: bold;
-        color: blue;
+        text-decoration: underline;
       }
     }
   }
@@ -40,7 +46,7 @@ const Table = styled.table`
   td {
     padding: 0.2rem 1rem;
     text-align: right;
-
+    color: #000000;
     &:nth-child(1) {
       text-align: center;
     }

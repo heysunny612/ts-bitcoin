@@ -3,6 +3,10 @@ import { Outlet } from 'react-router-dom';
 import Header from './components/Header';
 import { styled } from 'styled-components';
 import { ReactQueryDevtools } from 'react-query/devtools';
+import { ThemeProvider } from 'styled-components';
+import { theme } from './theme.ts';
+import { useState, useEffect } from 'react';
+
 const GlobalStyle = createGlobalStyle`
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -75,21 +79,31 @@ const Container = styled.section`
   position: relative;
   max-width: 1200px;
   margin: 1rem auto;
-  background-color: #fff;
   min-height: 100vh;
   box-shadow: 2px 2px 4px #dee1e7;
+  background-color: ${(props) => props.theme.bgContainer};
 `;
 
 function App() {
+  const [dark, setDark] = useState('dark');
+
+  useEffect(() => {
+    const isDark = localStorage.theme === 'dark';
+    if (isDark) {
+      setDark('dark');
+    } else {
+      setDark('light');
+    }
+  }, []);
   return (
-    <>
+    <ThemeProvider theme={theme[dark]}>
       <Container>
         <GlobalStyle />
-        <Header />
+        <Header setDark={setDark} dark={dark} />
         <Outlet />
       </Container>
       <ReactQueryDevtools initialIsOpen={true} />
-    </>
+    </ThemeProvider>
   );
 }
 
