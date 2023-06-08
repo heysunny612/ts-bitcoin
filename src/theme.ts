@@ -7,7 +7,7 @@ export const theme: DefaultTheme = {
     accentColor: '#093687',
     darkAccent: '#ffffff',
     bgContainer: '#ffffff',
-    bgTable: '#ffffff',
+    bgTable: '#f9fafc',
   },
   light: {
     textColor: '#ffffff',

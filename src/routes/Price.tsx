@@ -24,6 +24,7 @@ const PriceList = styled.ul`
     padding: 1rem;
     width: 100%;
     font-weight: bold;
+    color: #333;
     &.red {
       color: red;
     }

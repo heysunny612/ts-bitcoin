@@ -25,14 +25,16 @@ const Table = styled.table`
     vertical-align: middle;
     padding: 0.8rem;
     font-weight: bold;
-    background-color: #f9fafc;
+    background-color: ${(props) => props.theme.bgTable};
     border-bottom: 1px solid #eeeeee;
+    color: ${(props) => props.theme.textColor};
   }
   td {
     vertical-align: middle;
     padding: 0.8rem;
     border-bottom: 1px solid #eeeeee;
     line-height: 1.5;
+    color: #333;
   }
 `;
 
@@ -63,6 +65,7 @@ const TapMenu = styled.div`
     border: 1px solid #093687;
     font-size: 1.4rem;
     transition: all 200ms ease-in-out;
+    background-color: ${(props) => props.theme.bgTable};
 
     &:first-child {
       border-right: 0 none;
