@@ -2,16 +2,11 @@ import 'styled-components';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
-    dark: ITheme;
-    light: ITheme;
+    textColor: string;
+    bgColor: string;
+    accentColor: string;
+    darkAccent: string;
+    bgContainer: string;
+    bgTable: string;
   }
-}
-
-interface ITheme {
-  textColor: string;
-  bgColor: string;
-  accentColor: string;
-  darkAccent: string;
-  bgContainer: string;
-  bgTable: string;
 }

@@ -2,6 +2,8 @@ import { styled } from 'styled-components';
 import { AiOutlineHome } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { CiDark, CiLight } from 'react-icons/ci';
+import { isDarkAtom } from '../atoms';
+import { useSetRecoilState, useRecoilValue } from 'recoil';
 
 const Home = styled.div`
   position: absolute;
@@ -12,7 +14,6 @@ const Home = styled.div`
 
   svg {
     background-color: ${(props) => props.theme.accentColor};
-
     color: ${(props) => props.theme.darkAccent};
     padding: 0.5rem;
     border-radius: 100%;
@@ -32,27 +33,21 @@ const Home = styled.div`
   }
 `;
 
-interface HeaderProps {
-  dark: string;
-  setDark: React.Dispatch<React.SetStateAction<string>>;
-}
-
-export default function Header({ dark, setDark }: HeaderProps) {
+export default function Header() {
+  const setDarkAtom = useSetRecoilState(isDarkAtom);
+  const isDark = useRecoilValue(isDarkAtom);
   const toggleTheme = () => {
-    if (dark === 'dark') {
-      setDark('light');
-      localStorage.theme = 'light';
-    } else {
-      setDark('dark');
-      localStorage.theme = 'dark';
-    }
+    isDark ? (localStorage.theme = 'dark') : (localStorage.theme = 'light');
+    setDarkAtom((prev) => !prev);
   };
+
   return (
     <Home>
       <Link to='/'>
         <AiOutlineHome />
       </Link>
-      {dark === 'dark' ? (
+
+      {isDark ? (
         <CiDark onClick={toggleTheme} />
       ) : (
         <CiLight onClick={toggleTheme} />

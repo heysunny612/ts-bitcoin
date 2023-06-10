@@ -4,8 +4,10 @@ import Header from './components/Header';
 import { styled } from 'styled-components';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { ThemeProvider } from 'styled-components';
-import { theme } from './theme.ts';
-import { useState, useEffect } from 'react';
+import { darkTheme, lightTheme } from './theme.ts';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { isDarkAtom } from './atoms.ts';
+import { useEffect } from 'react';
 
 const GlobalStyle = createGlobalStyle`
 html, body, div, span, applet, object, iframe,
@@ -85,21 +87,16 @@ const Container = styled.section`
 `;
 
 function App() {
-  const [dark, setDark] = useState('dark');
-
+  const [isDark, setIsDark] = useRecoilState(isDarkAtom);
   useEffect(() => {
-    const isDark = localStorage.theme === 'dark';
-    if (isDark) {
-      setDark('dark');
-    } else {
-      setDark('light');
-    }
-  }, []);
+    const isDarkMode = localStorage.theme === 'dark';
+    setIsDark(!isDarkMode);
+  }, [setIsDark]);
   return (
-    <ThemeProvider theme={theme[dark]}>
+    <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
       <Container>
         <GlobalStyle />
-        <Header setDark={setDark} dark={dark} />
+        <Header />
         <Outlet />
       </Container>
       <ReactQueryDevtools initialIsOpen={true} />
