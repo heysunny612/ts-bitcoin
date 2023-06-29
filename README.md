@@ -1,7 +1,8 @@
 # 리액트 프로젝트 코인 가격 확인 사이트 
 
-![1](https://github.com/heysunny612/ts-bitcoin/assets/127499117/9ee7355f-fcdf-4dba-a54a-aa762994469e)
-
+<p align="center">
+    <img src="https://github.com/heysunny612/ts-bitcoin/assets/127499117/9ee7355f-fcdf-4dba-a54a-aa762994469e" alt="1">
+</p>
 
 <br/>
 
@@ -33,7 +34,9 @@ const toggleTheme = () => {
 <br/>
 <br/>
 
-![2](https://github.com/heysunny612/ts-bitcoin/assets/127499117/710554b7-e8b6-456a-9dfd-6be7da6957dd)
+<p align="center">
+    <img src="https://github.com/heysunny612/ts-bitcoin/assets/127499117/710554b7-e8b6-456a-9dfd-6be7da6957dd" alt="2">
+</p>
 
 
 <br/>
