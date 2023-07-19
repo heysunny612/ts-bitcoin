@@ -57,39 +57,7 @@ const toggleTheme = () => {
     ]}
     options={{
       theme: {
-        mode: isDark ? 'dark' : 'light',
-      },
-      chart: {
-        type: 'candlestick',
-        width: 300,
-        height: 300,
-        toolbar: { show: false },
-        background: '#f9fafc',
-      },
-      xaxis: {
-        labels: { show: true },
-        axisTicks: { show: false },
-        axisBorder: { show: false },
-        tooltip: { enabled: true },
-      },
-      yaxis: {
-        tooltip: {
-          enabled: true,
-        },
-      },
-      stroke: { curve: 'smooth', width: 4 },
-      grid: { show: false },
-      tooltip: { y: { formatter: (value) => `${value.toFixed(2)}` } },
-    }}
-  />
-)}
-```
-
-<br/>
-
-| 제목 | 설명 |
-| --- | --- |
-| 구현 사항 | -코인파프리카 API 사용 동영상 불러오기 <br/> -filter, sort 메소드를 사용하여 높은 가격순 구현 <br/> -Styled-components + recoil을 이용한 theme 구현<br/> -ApexChart 라이브러리를 사용한 차트 구현 <br/> -React-router-dom을 사용하여 탭 UI 구현|
+        mode: isDark ? 'dark' : 'ligh보 불러오기 <br/> -filter, sort 메소드를 사용하여 높은 가격순 구현 <br/> -Styled-components + recoil을 이용한 theme 구현<br/> -ApexChart 라이브러리를 사용한 차트 구현 <br/> -React-router-dom을 사용하여 탭 UI 구현|
 | 라이브러리 | axios, react-query, styled-components,react-apexcharts,react-router-dom, recoil |
 | css 및 반응형  | Styled-components사용 , 반응형 구현 , 타입스크립트 적용 |
 | 배포 주소  | Netlify [https://sunny-bit.netlify.app/](https://sunny-bit.netlify.app/) |
